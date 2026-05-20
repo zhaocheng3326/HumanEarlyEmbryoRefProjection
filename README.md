@@ -15,8 +15,6 @@ keep the Git repository small.
 ## Repository Structure
 
 - `HuEm_stable_reference_projection_tool/`: R package source for `HuEmProjection`.
-- `reference_contruction/`: scripts used to construct the human embryonic reference and stabilized projection files.
-- `cross_species_integration/`: scripts for cross-species integration among human, marmoset, and cynomolgus monkey data.
 
 ## Install the R Package
 
