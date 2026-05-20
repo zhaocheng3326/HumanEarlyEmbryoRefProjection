@@ -1,0 +1,68 @@
+Code/docker for Human early embryo reference and projection tool
+Authors/Creators
+Zhao, Cheng
+ORCID icon
+Description
+ReadME
+1. HuEm_stable_reference_projection_tool Folder
+This folder contains an offline version of the prediction tool.
+Input Gene Expression Matrix: Users can modify the path of the input gene expression matrix file or provide their own expression data when using the pipeline.
+Running MiloR: The `para.list$runMiloR` parameter is used to determine whether to run neighborhood aggregation using miloR.
+Group Information: If users want to perform aggregation within a specific group, they can provide the group information. Otherwise, this field can be left empty.
+ 
+
+2. reference_construction Folder
+This folder contains scripts for constructing the human embryonic reference and recording the necessary files for stabilized projection.
+HEEM.Stable.reference.construct.fastMNN.R: This script is used for constructing the human embryonic reference and recording the needed files for stabilized projection.
+HEEM.Stable.reference.create.SVM.model.R: This script is used to find the best parameters for the SVM classifier for each lineage.
+HEEM.stable.reference.SCP.main.traj.R: This script is used for trajectory analysis and inferring pseudo-time.
+3. cross_species_integration Folder
+This folder contains scripts for cross-species integration among human, marmoset, and cynomolgus monkey data.
+merge.Human.Marmoset.Cyno.data.R: This script is used to perform cross-species integration among human, marmoset, and cynomolgus monkey data.
+4. Installation
+compatible package version: users can refer to the session info of projecting_query_dataset.html to find the compatible version of packages.
+Available docker:  https://hub.docker.com/r/zhaocheng/shiny-tools-eeptools. (around 15 mins to pull it down)
+projecting_query_dataset.R can be used for the test (around 10 mins)
+To use the docker (example)
+
+`docker run -it -v /local/folder/HumanEarlyEmbryoRefProjection/:/home/docker/Install/project --name eeptools zhaocheng/shiny-tools-eeptools:v1 /bin/bash`
+
+`mkdir -p /tmp/Rlib`
+
+`cd /home/docker/Install ## keep this directory because it contains the packrat R package environment`
+
+`R CMD INSTALL -l /tmp/Rlib project/HuEm_stable_reference_projection_tool`
+
+`Rscript -e '.libPaths(c("/tmp/Rlib", .libPaths())); source("project/HuEm_stable_reference_projection_tool/tests/test_function_loading.R")'`
+
+After installation, use the package in R:
+
+`library(HuEmProjection)`
+
+Set the model directory after downloading and extracting the GitHub Release asset:
+
+`huem_set_model_dir("/path/to/model")`
+
+Or download the Release asset directly:
+
+`huem_download_models(model_url = "https://github.com/<OWNER>/<REPO>/releases/download/v0.1.0/HuEmProjection-model-v0.1.0.tar.gz")`
+
+`predict_out <- project_demo_dataset(n = "n1000")`
+
+ 
+
+ 
+
+License This project is licensed under the terms of the GNU General Public License v3.0 or later. 
+
+ 
+
+If you think it is helpful, please cite
+
+our paper:  Zhao et al., 2024 (DOI: 10.1038/s41592-024-02493-2)
+
+and 
+
+Original MNN paper : Haghverdi et al., 2018 ( DOI: 10.1038/nbt.4091)
+
+If you're using miloR to do aggregation, please cite miloR paper: Dann et al., 2022 (DOI: 10.1038/s41587-021-01033-z) as well. 

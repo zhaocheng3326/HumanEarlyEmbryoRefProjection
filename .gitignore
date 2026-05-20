@@ -1,0 +1,5 @@
+HuEmProjection_*.tar.gz
+release-assets/*.tar.gz
+*.Rcheck/
+.DS_Store
+.Rhistory

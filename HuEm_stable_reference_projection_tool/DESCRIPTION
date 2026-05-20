@@ -1,0 +1,37 @@
+Package: HuEmProjection
+Type: Package
+Title: Human Early Embryo Reference Projection
+Version: 0.1.0
+Authors@R: person("Cheng", "Zhao", role = c("aut", "cre"), email = "cheng.zhao@example.com")
+Author: Cheng Zhao
+Maintainer: Cheng Zhao <cheng.zhao@example.com>
+Description: Offline projection of query single-cell gene expression matrices
+    onto a stable human early embryo reference, with UMAP projection, SVM-based
+    cell identity prediction, Milo neighbourhood aggregation, and pseudotime
+    transfer.
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends:
+    R (>= 4.0.0)
+Imports:
+    batchelor,
+    BiocNeighbors,
+    caret,
+    data.table,
+    dplyr,
+    igraph,
+    miloR,
+    magrittr,
+    scater,
+    scran,
+    scuttle,
+    SingleCellExperiment,
+    S4Vectors,
+    SummarizedExperiment,
+    tibble,
+    tidyr,
+    uwot
+Suggests:
+    ff,
+    ggplot2
+RoxygenNote: 7.3.2
